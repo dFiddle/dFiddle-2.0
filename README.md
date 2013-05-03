@@ -13,7 +13,7 @@ Unfortuanately, due to the nature of Durandal that encourgae you to break down a
  [composition] to stich them back together, those apps are no longer at their sweet spot, because there's no easy way to 
 deal with multiple smaller files.
 
-Durandal GHFiddle to the rescue.
+**Durandal Fiddle** to the rescue.
 
 ### How to use?
 
