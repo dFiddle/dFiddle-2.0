@@ -11,7 +11,7 @@ sharing code during discussions on stackoverflow or newsgroups.
 
 Unfortuanately, due to the nature of Durandal that encourgae you to break down apps in many smaller modules and then use 
  [composition] to stich them back together, those apps are no longer at their sweet spot, because there's no easy way to 
-deal with multiple smaller files.
+deal with multiple smaller external files.
 
 **Durandal Fiddle** to the rescue.
 
@@ -19,14 +19,18 @@ deal with multiple smaller files.
 
 
 + Step 1: Fork the repo (hint there's a fork button in the upper right) 
-+ Step 2: Be patient and wait a little (about 10 min). By default the live version will be accessible using an URL like  http://YourUserName.github.io/Durandal-Fiddle. 
-+ Step 3: To get you started there are 3 demo fiddles under `App/fiddles`. Use github's online editor to modify them https://github.com/YourUserName/Durandal-Fiddle/App/fiddles
++ Step 2: To get you started there are 3 demo fiddles under `App/fiddles`. Use github's online editor to modify them https://github.com/YourUserName/Durandal-Fiddle/App/fiddles
++ Step 3: Once you make your first commit the live will become available at an URL like  http://YourUserName.github.io/Durandal-Fiddle. According to github it might take up to **ten minutes** for changes to be visible.
 
 
+Once you nailed your fiddle 
 
-Share the link to your demo (running at http://YourUserName.github.io/Durandal-Fiddle) and share the code snippets (stored at https://github.com/YourUserName/Durandal-Fiddle)
++ share links to the the live version: running at http://YourUserName.github.io/Durandal-Fiddle
++ share the links to the code stored at https://github.com/YourUserName/Durandal-Fiddle
  
-Enjoy,
+
+
+Happy fiddling,
 
 Rainer
 
