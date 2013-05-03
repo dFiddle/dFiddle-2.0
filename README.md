@@ -19,15 +19,15 @@ deal with multiple smaller external files.
 
 
 + Step 1: Fork the repo (hint there's a fork button in the upper right) 
-+ Step 2: To get you started there are 3 demo fiddles under `App/fiddles`. Use github's online editor to modify them https://github.com/YourUserName/Durandal-Fiddle/App/fiddles
-+ Step 3: Once you make your first commit the live will become available at an URL like  http://YourUserName.github.io/Durandal-Fiddle. According to github it might take up to **ten minutes** for changes to be visible.
++ Step 2: To get you started there are 3 demo fiddles under `App/fiddles`. Use github's online editor to modify them `https://github.com/Your_User_Name/Durandal-Fiddle/App/fiddles`.
++ Step 3: Once you make your first commit the live will become available at an URL like  `http://Your_User_Name.github.io/Durandal-Fiddle`. According to github it might take up to **ten minutes** for changes to be visible.
 
 
 Once you nailed your fiddle 
 
-+ share links to the the live version: running at http://YourUserName.github.io/Durandal-Fiddle
-+ share the links to the code stored at https://github.com/YourUserName/Durandal-Fiddle
- 
++ share links to the the live version e.g. `http://Your_User_Name.github.io/Durandal-Fiddle#/fiddles/fiddle-01`
++ share links right down to a specific code line e.g. `https://github.com/Your_User_Name/Durandal-Fiddle/blob/gh-pages/App/fiddles/fiddle-01/index.html#L4`
+
 
 
 Happy fiddling,
