@@ -7,7 +7,7 @@
     });
 
     function activate() {
-        title("That\'s get boring.... Your turn ");
+        title("That gets boring.... Your turn");
     };
 
     return {
