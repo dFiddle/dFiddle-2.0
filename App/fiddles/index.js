@@ -4,15 +4,15 @@
   return {
     activeSample: viewModel.activator(),
     fiddles: [{
-      name: 'friendly name Fiddle 01',
+      name: 'Fiddle 01',
       hash: '#/fiddles/fiddle-01',
       moduleId: 'fiddles/fiddle-01/index'
     }, {
-      name: 'friendly name  Fiddle 02',
+      name: 'Fiddle 02',
       hash: '#/fiddles/fiddle-02',
       moduleId: 'fiddles/fiddle-02/index'
     }, {
-      name: 'friendly name Fiddle 03',
+      name: 'Fiddle 03',
       hash: '#/fiddles/fiddle-03',
       moduleId: 'fiddles/fiddle-03/index'
     }],
