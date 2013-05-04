@@ -6,11 +6,11 @@ A cut down version of [Durandal], hosted as Github repo with only one gh-pages b
 
 ### What is it good for?
 
-JSFiddle et al. are all great when there's a need to fiddling with CSS/JavaScript/HTML snipets or 
+JSFiddle et al. are all great when there's a need to fiddling with CSS/JavaScript/HTML snippets or 
 sharing code during discussions on stackoverflow or newsgroups. 
 
-Unfortuanately, due to the nature of Durandal that encourage you to break down apps in many smaller modules and then use 
- [composition] to stich them back together, those apps are no longer at their sweet spot. because there's no easy way to 
+Unfortunately, due to the nature of Durandal that encourage you to break down apps in many smaller modules and then use 
+ [composition] to stitch them back together, those apps are no longer at their sweet spot. because there's no easy way to 
 deal with multiple smaller external files.
 
 **dFiddle** to the rescue.
