@@ -1,16 +1,37 @@
-﻿define(['durandal/app'], function (app) {
-    
-    var name = ko.observable();
-    var canSayHello = ko.computed(function () {
-        return name() ? true : false;
-    });
+﻿define(['durandal/viewModel', 'samples/global'],
+    function (viewModel, global) {
 
-    return {
-        displayName: 'What is your name?',
-        name: name,
-        sayHello: function () {
-            app.showMessage('Hello ' + name() + '!', 'Greetings');
-        },
-        canSayHello: canSayHello
-    };
-});
+        return {
+            activeSample: viewModel.activator(),
+            isDFiddle: ko.observable(false),
+            dFiddleRepoUrl: ko.observable(''),
+            notAvailable: global.notAvailable,
+            sampleGroups: [
+                {
+                    name: 'Basic examples',
+                    samples: [{
+                        name: 'Hello World',
+                        hash: '#/hello/default',
+                        moduleId: 'samples/hello/default/index'
+                    }]
+                },
+                {
+                    name: 'Detailed Examples',
+                    samples: []
+                },
+                {
+                    name: 'Fiddles',
+                    samples: [{
+                        name: 'Hello World',
+                        hash: '#/hello/dFiddle',
+                        moduleId: 'samples/hello/dFiddle/index'
+                    }]
+                }
+            ],
+            activate: function (args) {
+                var self = this;
+                var testThis = global.activateIndex(args, self);
+                return testThis;
+            }
+        };
+    });

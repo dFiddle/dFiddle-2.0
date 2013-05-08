@@ -1,12 +1,29 @@
-﻿<div>
-    <h1>Widgets Sample</h1>
-    <div data-bind="expander:{items:projects}">
-        <h3 data-part="header">Project: <span data-bind="text: name"></span></h3>
-    </div>
-    <button class="btn" data-bind="click: addNewProject">Add</button>
+﻿<div class="container-fluid knockout-samples">
+    <div class="row-fluid">
+        <div class="span2 well">
+            <ul class="nav nav-list">
+               <!--ko foreach: sampleGroups-->
+                   <li class="nav-header" data-bind="text: name"></li>
+                    <!--ko if: samples.length === 0 -->
+                    <li data-bind="text: $parent.notAvailable"></li>
+                    <!-- /ko -->
+                    <!--ko foreach: samples-->
+                    <li data-bind="css: { active: $root.activeSample().__moduleId__ == $data.moduleId }">
+                        <a data-bind="attr: { href: hash }, text: name"></a>
+                    </li>
+                    <!--/ko-->
+                <!--/ko-->
+            </ul>
+        </div>
+        <div class="span10">
+            <!-- ko if: $data.isDFiddle -->
+            <div class="alert">
+                <strong>dFiddle</strong> code available at <a data-bind="attr: { href: dFiddleRepoUrl }, text: dFiddleRepoUrl"></a>
+            </div>
+            <!-- /ko -->
 
-    <!-- This following syntax can be used without needing to register the widget kind.-->
-    <!--<div data-bind="widget: {kind:'expander',items:projects}">
-            <h2 data-part="header">Project: <span data-bind="text: name"></span></h2>
-        </div>-->
+            <!-- ko compose: activeSample -->
+            <!-- /ko -->
+        </div>
+    </div>
 </div>

@@ -1,8 +1,29 @@
-﻿<div>
-    <h1>Master Detail</h1>
-    
-    <label>Select Project</label>
-    <select data-bind="options: projects, optionsText: 'name', value: activeProject"></select>
-    
-    <!--ko compose: activeProject--><!--/ko-->
+﻿<div class="container-fluid knockout-samples">
+    <div class="row-fluid">
+        <div class="span2 well">
+            <ul class="nav nav-list">
+               <!--ko foreach: sampleGroups-->
+                 <li class="nav-header" data-bind="text: name"></li>
+                     <!--ko if: samples.length === 0 -->
+                    <li data-bind="text: $parent.notAvailable"></li>
+                    <!-- /ko -->
+                   <!--ko foreach: samples-->
+                    <li data-bind="css: { active: $root.activeSample().__moduleId__ == $data.moduleId }">
+                        <a data-bind="attr: { href: hash }, text: name"></a>
+                    </li>
+                    <!--/ko-->
+                <!--/ko-->
+            </ul>
+        </div>
+        <div class="span10">
+            <!-- ko if: $data.isDFiddle -->
+            <div class="alert">
+                <strong>dFiddle</strong> code available at <a data-bind="attr: { href: dFiddleRepoUrl }, text: dFiddleRepoUrl"></a>
+            </div>
+            <!-- /ko -->
+
+            <!-- ko compose: activeSample -->
+            <!-- /ko -->
+        </div>
+    </div>
 </div>

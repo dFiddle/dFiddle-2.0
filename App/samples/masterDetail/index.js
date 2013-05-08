@@ -1,13 +1,36 @@
-﻿define(['./project', 'durandal/viewModel'], function (Project, viewModel) {
-    
-    var projects = ko.observableArray([
-        new Project('Durandal', 'A cross-device, cross-platform application framework written in JavaScript, Durandal is a very small amount of code built on top of three existing and established Javascript libraries: jQuery, Knockout and RequireJS.'),
-        new Project('UnityDatabinding', 'A general databinding framework for Unity3D. Includes bindings for UI composition and samples for the NGUI library.'),
-        new Project('Caliburn.Micro', 'Caliburn.Micro is a small, yet powerful framework, designed for building applications across all Xaml Platforms. With strong support for MVVM and other proven UI patterns, Caliburn.Micro will enable you to build your solution quickly, without the need to sacrifice code quality or testability.')
-    ]);
+﻿define(['durandal/viewModel', 'samples/global'],
+    function (viewModel, global) {
 
-    return {
-        projects: projects,
-        activeProject: viewModel.activator().forItems(projects)        
-    };
-});
+        return {
+            activeSample: viewModel.activator(),
+            isDFiddle: ko.observable(false),
+            dFiddleRepoUrl: ko.observable(''),
+            notAvailable: global.notAvailable,
+            sampleGroups: [
+                {
+                    name: 'Basic examples',
+                    samples: [{
+                        name: 'Master Detail',
+                        hash: '#/master-detail/default',
+                        moduleId: 'samples/masterDetail/default/index'
+                    }]
+                },
+                {
+                    name: 'Detailed Examples',
+                    samples: []
+                },
+                {
+                    name: 'Fiddles',
+                    samples: [{
+                        name: 'Master Detail',
+                        hash: '#/master-detail/dFiddle',
+                        moduleId: 'samples/masterDetail/dFiddle/index'
+                    }]
+                }
+            ],
+            activate: function (args) {
+                var that = this;
+                return global.activateIndex(args, that);
+            }
+        };
+    });
