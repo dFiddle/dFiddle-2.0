@@ -2,7 +2,7 @@
     function (system) {
 
         return {
-            dFiddleRepoUrl: 'https://github.com/dFiddle/dFiddle-1.2/tree/gh-pages/App/',
+            dFiddleRepoUrl: 'https://github.com/SpiritAG/dFiddle-1.2-Q-and-A/blob/gh-pages/App/',
             activateIndex: activateIndex,
             notAvailable: 'Coming soon'
         };
@@ -20,6 +20,9 @@
             ctx.isDFiddle(args.name === 'dFiddle');
 
             return system.acquire(partialModuleID + args.name + '/index').then(function (sample) {
+                if ( !ctx.isDFiddle()) {
+                  ctx.isDFiddle(sample.showCodeUrl);
+                }
                 ctx.dFiddleRepoUrl(self.dFiddleRepoUrl + sample.__moduleId__ + '.js');
                 ctx.activeSample(sample);
             });
