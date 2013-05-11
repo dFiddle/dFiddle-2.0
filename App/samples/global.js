@@ -2,7 +2,7 @@
     function (system) {
 
         return {
-            dFiddleRepoUrl: 'https://github.com/SpiritAG/dFiddle-1.2-Q-and-A/blob/gh-pages/App/',
+            dFiddleRepoUrl: 'https://github.com/dFiddle/dFiddle-1.2/tree/gh-pages/App/',
             activateIndex: activateIndex,
             notAvailable: 'Coming soon'
         };
