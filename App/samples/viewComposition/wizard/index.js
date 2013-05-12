@@ -7,11 +7,11 @@
 
     var hasPrevious = ko.computed(function() {
         return step() > 0;
-    }, this);
+    });
 
     var hasNext = ko.computed(function() {
-        return step() <= stepsLength;
-    }, this);
+        return (step() < stepsLength - 1);
+    });
 
     // Start with first step
     activeStep(steps[step()]);
