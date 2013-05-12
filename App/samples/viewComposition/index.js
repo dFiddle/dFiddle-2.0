@@ -19,7 +19,11 @@
         },
         {
           name: 'Detailed Examples',
-          samples: []
+          samples: [{
+                        name: 'Wizard',
+                        hash: '#/view-composition/wizard',
+                        moduleId: 'samples/viewComposition/wizard/index'
+                      }]
         },
         {
           name: 'Fiddles',

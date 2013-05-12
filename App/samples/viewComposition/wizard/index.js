@@ -1,0 +1,44 @@
+﻿define(['durandal/viewModel', './step1', './step2', './step3'], function( viewModel, Step1, Step2, Step3 ) {
+
+    var steps = [new Step1(), new Step2(), new Step3()];
+    var step = ko.observable(0);
+    var activeStep = viewModel.activator();
+    var stepsLength = steps.length;
+
+    var hasPrevious = ko.computed(function() {
+        return step() > 0;
+    }, this);
+
+    var hasNext = ko.computed(function() {
+        return step() <= stepsLength;
+    }, this);
+
+    // Start with first step
+    activeStep(steps[step()]);
+
+    return {
+        showCodeUrl: true,
+        steps: steps,
+        step: step,
+        activeStep: activeStep,
+        next: next,
+        previous: previous,
+        hasPrevious: hasPrevious,
+        hasNext: hasNext
+    };
+
+    function next () {
+        if ( step() < stepsLength ) {
+            step(step() + 1);
+            activeStep(steps[step()]);
+        }
+    }
+
+    function previous () {
+        if ( step() > 0 ) {
+            step(step() - 1);
+            activeStep(steps[step()]);
+        }
+    }
+
+});
