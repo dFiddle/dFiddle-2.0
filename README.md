@@ -1,8 +1,8 @@
 # dFiddle
 
 JSFiddle et al. are all great when there's a need to fiddle with CSS/JavaScript/HTML snippets or
-share code during discussions on stackoverflow or newsgroups. Unfortunately, due to the nature of Durandal which encourages you to break down apps into many smaller modules and then use 
-[composition](/documentation/Using-Composition) to stitch them back together, those apps are no longer at their sweet spot. There's no easy
+share code during discussions on stackoverflow or newsgroups. Unfortunately, due to the nature of  which encourages you to break down apps into many smaller modules and then use 
+[composition](http://durandaljs.com/documentation/Using-Composition) to stitch them back together, those apps are no longer at their sweet spot. There's no easy
  way to deal with multiple smaller external files in tools like JSFiddle. [dFiddle](https://github.com/dFiddle/dFiddle-1.2) to the rescue!
 
 ### What is it?
@@ -41,3 +41,6 @@ According to GitHub, it may take up to **ten minutes** for changes to be visible
 https://github.com/dFiddle/dFiddle-1.2/blob/gh-pages/App/samples/viewComposition/wizard/index.js#L3
 
 Totally optional: Whenever you find a solution for a specific issue, send a pull request so that it can be integrated.
+
+
+[Durandal]:http://durandaljs.com/
