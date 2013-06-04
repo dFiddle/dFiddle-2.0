@@ -1,10 +1,12 @@
-﻿define(['require'], function (require) {
+﻿define(['require'], function(require) {
     var isDebugging = false,
         nativeKeys = Object.keys,
         hasOwnProperty = Object.prototype.hasOwnProperty,
         toString = Object.prototype.toString,
         system,
-        treatAsIE8 = false;
+        treatAsIE8 = false,
+        nativeIsArray = Array.isArray,
+        slice = Array.prototype.slice;
 
     //see http://patik.com/blog/complete-cross-browser-console-log/
     // Tell IE9 to use its built-in console
@@ -29,14 +31,14 @@
     // http://bugs.dojotoolkit.org/ticket/16727
 
     if (require.on) {
-        require.on("moduleLoaded", function (module, mid) {
+        require.on("moduleLoaded", function(module, mid) {
             system.setModuleId(module, mid);
         });
     }
 
     // callback for require.js loader
     if (typeof requirejs !== 'undefined') {
-        requirejs.onResourceLoad = function (context, map, depArray) {
+        requirejs.onResourceLoad = function(context, map, depArray) {
             system.setModuleId(context.defined[map.id], map.id);
         };
     }
@@ -55,20 +57,20 @@
                         i++;
                     }
                 }
-                    // All other modern browsers
-                else if ((Array.prototype.slice.call(arguments)).length == 1 && typeof Array.prototype.slice.call(arguments)[0] == 'string') {
-                    console.log((Array.prototype.slice.call(arguments)).toString());
+                // All other modern browsers
+                else if ((slice.call(arguments)).length == 1 && typeof slice.call(arguments)[0] == 'string') {
+                    console.log((slice.call(arguments)).toString());
                 } else {
-                    console.log(Array.prototype.slice.call(arguments));
+                    console.log(slice.call(arguments));
                 }
             }
-                // IE8
+            // IE8
             else if ((!Function.prototype.bind || treatAsIE8) && typeof console != 'undefined' && typeof console.log == 'object') {
-                Function.prototype.call.call(console.log, console, Array.prototype.slice.call(arguments));
+                Function.prototype.call.call(console.log, console, slice.call(arguments));
             }
 
             // IE7 and lower, and other old browsers
-        } catch(ignore) {}
+        } catch (ignore) { }
     };
 
     var logError = function(error) {
@@ -76,13 +78,13 @@
     };
 
     system = {
-        version:"1.2.0",
+        version: "2.0.0",
         noop: noop,
         getModuleId: function(obj) {
             if (!obj) {
                 return null;
             }
-            
+
             if (typeof obj == 'function') {
                 return obj.prototype.__moduleId__;
             }
@@ -93,7 +95,7 @@
 
             return obj.__moduleId__;
         },
-        setModuleId: function (obj, id) {
+        setModuleId: function(obj, id) {
             if (!obj) {
                 return;
             }
@@ -108,6 +110,13 @@
             }
 
             obj.__moduleId__ = id;
+        },
+        getObjectResolver: function(module) {
+            if (system.isFunction(module)) {
+                return module;
+            } else {
+                return (function() { return module; });
+            }
         },
         debug: function(enable) {
             if (arguments.length == 1) {
@@ -125,11 +134,13 @@
                 return isDebugging;
             }
         },
-        isArray: function(obj) {
-            return toString.call(obj) === '[object Array]';
-        },
         log: noop,
         error: noop,
+        assert: function (condition, message) {
+            if (!condition) {
+                system.error(new Error(message || 'Assertion failed.'));
+            }
+        },
         defer: function(action) {
             return $.Deferred(action);
         },
@@ -140,7 +151,7 @@
             });
         },
         acquire: function() {
-            var modules = Array.prototype.slice.call(arguments, 0);
+            var modules = slice.call(arguments, 0);
             return this.defer(function(dfd) {
                 require(modules, function() {
                     var args = arguments;
@@ -149,6 +160,21 @@
                     }, 1);
                 });
             }).promise();
+        },
+        extend: function(obj) {
+            var rest = slice.call(arguments, 1);
+
+            for (var i = 0; i < rest.length; i++) {
+                var source = rest[i];
+
+                if (source) {
+                    for (var prop in source) {
+                        obj[prop] = source[prop];
+                    }
+                }
+            }
+
+            return obj;
         }
     };
 
@@ -167,6 +193,36 @@
 
         return keys;
     };
+
+    system.isElement = function(obj) {
+        return !!(obj && obj.nodeType === 1);
+    };
+
+    system.isArray = nativeIsArray || function(obj) {
+        return toString.call(obj) == '[object Array]';
+    };
+
+    system.isObject = function(obj) {
+        return obj === Object(obj);
+    };
+
+    system.isBoolean = function(obj) {
+        return typeof(obj) === "boolean";
+    };
+
+    //isArguments, isFunction, isString, isNumber, isDate, isRegExp.
+    var isChecks = ['Arguments', 'Function', 'String', 'Number', 'Date', 'RegExp'];
+
+    function makeIsFunction(name) {
+        var value = '[object ' + name + ']';
+        system['is' + name] = function(obj) {
+            return toString.call(obj) == value;
+        };
+    }
+
+    for (var i = 0; i < isChecks.length; i++) {
+        makeIsFunction(isChecks[i]);
+    }
 
     return system;
 });

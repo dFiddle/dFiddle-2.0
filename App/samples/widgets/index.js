@@ -1,8 +1,47 @@
-﻿define(['durandal/viewModel', 'samples/global'],
-    function (viewModel, global) {
+﻿define(['durandal/plugins/router', 'samples/global'], function( router, global ) {
+    var childRouter = router.createChildRouter();
+    childRouter.map([
+          {
+              type: 'intro',
+              title: 'Widget Sample',
+              route: 'widgets',
+              moduleId: 'samples/widgets/default/index'
+          },
+          {
+              type: 'intro',
+              title: 'Widget Sample',
+              route: 'widgets/default',
+              moduleId: 'samples/widgets/default/index',
+              nav: true
+          },
+          {
+              type: 'fiddle',
+              title: 'Widget Sample',
+              route: 'widgets/dFiddle',
+              moduleId: 'samples/widgets/dFiddle/index',
+              nav: true
+          }
+      ])
+      .buildNavigationModel()
+      .on('router:navigation:complete').then(global.createSampleLink);
+
+
+    return {
+        global: global,
+        router: childRouter,
+        getItemsByCategoryId: function( categoryId ) {
+            return ko.utils.arrayFilter(childRouter.navigationModel(), function( route ) {
+                return route.type === categoryId;
+            });
+        }
+    };
+});
+
+define(['durandal/activator', 'samples/global'],
+    function (activator, global) {
 
         return {
-            activeSample: viewModel.activator(),
+            activeSample: activator.create(),
             isDFiddle: ko.observable(false),
             dFiddleRepoUrl: ko.observable(''),
             notAvailable: global.notAvailable,

@@ -1,18 +1,14 @@
-﻿define(['./composition', './system', './viewModel'],
-    function (composition, system, viewModel) {
+﻿define(['./composition', './system', './activator'],
+    function (composition, system, activator) {
 
     var contexts = {},
         modalCount = 0;
 
     function ensureModalInstance(objOrModuleId) {
         return system.defer(function(dfd) {
-            if (typeof objOrModuleId == "string") {
-                system.acquire(objOrModuleId).then(function(module) {
-                    if (typeof(module) == 'function') {
-                        dfd.resolve(new module());
-                    } else {
-                        dfd.resolve(module);
-                    }
+            if (system.isString(objOrModuleId)) {
+                system.acquire(objOrModuleId).then(function (module) {
+                    dfd.resolve(new (system.getObjectResolver(module))());
                 });
             } else {
                 dfd.resolve(objOrModuleId);
@@ -46,8 +42,8 @@
                 activate:false
             };
 
-            if (modalContext.afterCompose) {
-                settings.afterCompose = modalContext.afterCompose;
+            if (modalContext.documentAttached) {
+                settings.documentAttached = modalContext.documentAttached;
             }
 
             return settings;
@@ -58,17 +54,17 @@
 
             return system.defer(function(dfd) {
                 ensureModalInstance(obj).then(function(instance) {
-                    var activator = viewModel.activator();
+                    var modalActivator = activator.create();
 
-                    activator.activateItem(instance, activationData).then(function (success) {
+                    modalActivator.activateItem(instance, activationData).then(function (success) {
                         if (success) {
                             var modal = instance.modal = {
                                 owner: instance,
                                 context: modalContext,
-                                activator: activator,
+                                activator: modalActivator,
                                 close: function () {
                                     var args = arguments;
-                                    activator.deactivateItem(instance, true).then(function (closeSuccess) {
+                                    modalActivator.deactivateItem(instance, true).then(function (closeSuccess) {
                                         if (closeSuccess) {
                                             modalCount--;
                                             modalContext.removeHost(modal);
@@ -119,7 +115,6 @@
                 var newBodyOuterWidth = $("body").outerWidth(true);
                 body.css("margin-right", (newBodyOuterWidth - oldBodyOuterWidth + parseInt(modal.oldBodyMarginRight)) + "px");
                 html.scrollTop(oldScrollTop); // necessary for Firefox
-                $("#simplemodal-overlay").css("width", newBodyOuterWidth + "px");
             }
         },
         removeHost: function(modal) {
@@ -138,8 +133,8 @@
                 $("body").css("margin-right", modal.oldBodyMarginRight);
             }
         },
-        afterCompose: function(parent, newChild, settings) {
-            var $child = $(newChild);
+        documentAttached: function (child, context) {
+            var $child = $(child);
             var width = $child.width();
             var height = $child.height();
 
@@ -148,15 +143,15 @@
                 'margin-left': (-width / 2).toString() + 'px'
             });
 
-            $(settings.model.modal.host).css('opacity', 1);
+            $(context.model.modal.host).css('opacity', 1);
 
-            if ($(newChild).hasClass('autoclose')) {
-                $(settings.model.modal.blockout).click(function() {
-                    settings.model.modal.close();
+            if ($(child).hasClass('autoclose')) {
+                $(context.model.modal.blockout).click(function() {
+                    context.model.modal.close();
                 });
             }
 
-            $('.autofocus', newChild).each(function() {
+            $('.autofocus', child).each(function() {
                 $(this).focus();
             });
         }

@@ -1,8 +1,8 @@
-﻿define(['durandal/viewModel', './step1', './step2', './step3'], function( viewModel, Step1, Step2, Step3 ) {
+﻿define(['durandal/activator', './step1', './step2', './step3'], function( activator, Step1, Step2, Step3 ) {
 
     var steps = [new Step1(), new Step2(), new Step3()];
     var step = ko.observable(0);
-    var activeStep = viewModel.activator();
+    var activeStep = activator.create();
     var stepsLength = steps.length;
 
     var hasPrevious = ko.computed(function() {

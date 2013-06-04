@@ -1,36 +1,38 @@
-﻿define(['durandal/viewModel', 'samples/global'],
-    function (viewModel, global) {
+﻿define(['durandal/plugins/router', 'samples/global'], function( router, global ) {
+    var childRouter = router.createChildRouter();
+    childRouter.map([
+          {
+              type: 'intro',
+              title: 'Modal',
+              route: 'modal',
+              moduleId: 'samples/modal/default/index'
+          },
+          {
+              type: 'intro',
+              title: 'Modal Dialog',
+              route: 'modal/default',
+              moduleId: 'samples/modal/default/index',
+              nav: true
+          },
+          {
+              type: 'fiddle',
+              title: 'Modal Dialog',
+              route: 'modal/dFiddle',
+              moduleId: 'samples/modal/dFiddle/index',
+              nav: true
+          }
+      ])
+      .buildNavigationModel()
+      .on('router:navigation:complete').then(global.createSampleLink);
 
-        return {
-            activeSample: viewModel.activator(),
-            isDFiddle: ko.observable(false),
-            dFiddleRepoUrl: ko.observable(''),
-            notAvailable: global.notAvailable,
-            sampleGroups: [
-                {
-                    name: 'Basic examples',
-                    samples: [{
-                        name: 'Modal Dialogs',
-                        hash: '#/modal/default',
-                        moduleId: 'samples/modal/default/index'
-                    }]
-                },
-                {
-                    name: 'Detailed Examples',
-                    samples: []
-                },
-                {
-                    name: 'Fiddles',
-                    samples: [{
-                        name: 'Modal Dialog',
-                        hash: '#/modal/dFiddle',
-                        moduleId: 'samples/modal/dFiddle/index'
-                    }]
-                }
-            ],
-            activate: function (args) {
-                var that = this;
-                return global.activateIndex(args, that);
-            }
-        };
-    });
+
+    return {
+        global: global,
+        router: childRouter,
+        getItemsByCategoryId: function( categoryId ) {
+            return ko.utils.arrayFilter(childRouter.navigationModel(), function( route ) {
+                return route.type === categoryId;
+            });
+        }
+    };
+});

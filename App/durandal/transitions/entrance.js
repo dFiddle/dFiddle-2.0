@@ -1,50 +1,63 @@
 ﻿define(['../system'], function(system) {
     var fadeOutDuration = 100;
+    var endValues = {
+        marginRight: 0,
+        marginLeft: 0,
+        opacity: 1
+    };
+    var clearValues = {
+        marginLeft: '',
+        marginRight: '',
+        opacity: '',
+        display: ''
+    };
 
-    var entrance = function(parent, newChild, settings) {
+    var entrance = function(context) {
         return system.defer(function(dfd) {
             function endTransition() {
                 dfd.resolve();
             }
 
             function scrollIfNeeded() {
-                if (!settings.keepScrollPosition) {
+                if (!context.keepScrollPosition) {
                     $(document).scrollTop(0);
                 }
             }
 
-            if (!newChild) {
+            if (!context.child) {
                 scrollIfNeeded();
 
-                if (settings.activeView) {
-                    $(settings.activeView).fadeOut(fadeOutDuration, function () {
-                        if (!settings.cacheViews) {
-                            ko.virtualElements.emptyNode(parent);
+                if (context.activeView) {
+                    $(context.activeView).fadeOut(fadeOutDuration, function () {
+                        if (!context.cacheViews) {
+                            ko.virtualElements.emptyNode(context.parent);
                         }
                         endTransition();
                     });
                 } else {
-                    if (!settings.cacheViews) {
-                        ko.virtualElements.emptyNode(parent);
+                    if (!context.cacheViews) {
+                        ko.virtualElements.emptyNode(context.parent);
                     }
                     endTransition();
                 }
             } else {
-                var $previousView = $(settings.activeView);
-                var duration = settings.duration || 500;
-                var fadeOnly = !!settings.fadeOnly;
+                var $previousView = $(context.activeView);
+                var duration = context.duration || 500;
+                var fadeOnly = !!context.fadeOnly;
 
                 function startTransition() {
                     scrollIfNeeded();
 
-                    if (settings.cacheViews) {
-                        if (settings.composingNewView) {
-                            ko.virtualElements.prepend(parent, newChild);
+                    if (context.cacheViews) {
+                        if (context.composingNewView) {
+                            ko.virtualElements.prepend(context.parent, context.child);
                         }
                     } else {
-                        ko.virtualElements.emptyNode(parent);
-                        ko.virtualElements.prepend(parent, newChild);
+                        ko.virtualElements.emptyNode(context.parent);
+                        ko.virtualElements.prepend(context.parent, context.child);
                     }
+
+                    context.triggerViewAttached();
 
                     var startValues = {
                         marginLeft: fadeOnly ? '0' : '20px',
@@ -53,14 +66,13 @@
                         display: 'block'
                     };
 
-                    var endValues = {
-                        marginRight: 0,
-                        marginLeft: 0,
-                        opacity: 1
-                    };
+                    var $child = $(context.child);
 
-                    $(newChild).css(startValues);
-                    $(newChild).animate(endValues, duration, 'swing', endTransition);
+                    $child.css(startValues);
+                    $child.animate(endValues, duration, 'swing', function () {
+                        $child.css(clearValues);
+                        endTransition();
+                    });
                 }
 
                 if ($previousView.length) {

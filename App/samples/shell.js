@@ -3,31 +3,18 @@
     return {
         router: router,
         activate: function () {
-          router.map([
-             
-                { url: 'hello', moduleId: 'samples/hello/index', name: 'Hello World', visible: true },
-                { url: 'hello/:name', moduleId: 'samples/hello/index', name: 'Examples' },
+            router.map([
+                { route: '', moduleId: 'samples/hello/index', title: 'Hello World' },
+                { route: 'hello*details', hash: '#hello', moduleId: 'samples/hello/index', title: 'Hello World', nav: true },
+                { route: 'view-composition*details', hash:'#view-composition', moduleId: 'samples/viewComposition/index', title: 'View Composition', nav: true },
+                { route: 'modal*details', hash: '#modal', moduleId: 'samples/modal/index', title: 'Modal Dialogs', nav: true },
+                { route: 'event-aggregator*details', hash: '#event-aggregator', moduleId: 'samples/eventAggregator/index', title: 'Events', nav: true },
+                { route: 'widgets*details', hash:'#widgets',  moduleId: 'samples/widgets/index', title: 'Widgets', nav: true },
+                { route: 'master-detail*details', hash: '#master-detail', moduleId: 'samples/masterDetail/index', title: 'Master Detail', nav: true },
+                { route: 'knockout-samples*details', hash: '#knockout-samples', moduleId: 'samples/knockout/index', title: 'Knockout Samples', nav: true }
+            ]).buildNavigationModel();
 
-                { url: 'view-composition', moduleId: 'samples/viewComposition/index', name: 'View Composition', visible: true },
-                { url: 'view-composition/:name', moduleId: 'samples/viewComposition/index', name: 'Examples' },
-
-                { url: 'modal', moduleId: 'samples/modal/index', name: 'Modal Dialogs', visible: true },
-                { url: 'modal/:name', moduleId: 'samples/modal/index', name: 'Examples' },
-
-                { url: 'event-aggregator', moduleId: 'samples/eventAggregator/index', name: 'Events', visible: true },
-                { url: 'event-aggregator/:name', moduleId: 'samples/eventAggregator/index', name: 'Examples' },
-
-                { url: 'widgets', moduleId: 'samples/widgets/index', name: 'Widgets', visible: true },
-                { url: 'widgets/:name', moduleId: 'samples/widgets/index', name: 'Examples' },
-
-                { url: 'master-detail', moduleId: 'samples/masterDetail/index', name: 'Master Detail', visible: true },
-                { url: 'master-detail/:name', moduleId: 'samples/masterDetail/index', name: 'Examples' },
-
-                { url: 'knockout-samples/:name', moduleId: 'samples/knockout/index', name: 'Knockout Samples' },
-                { url: 'knockout-samples', moduleId: 'samples/knockout/index', name: 'Knockout Samples', visible: true }
-            ]);
-            
-          return router.activate('hello');
+            return router.activate();
         }
     };
 });

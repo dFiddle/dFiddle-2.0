@@ -1,11 +1,11 @@
-﻿define(['./system', './composition'], function (system, composition) {
+﻿define(['./system', './composition'], function(system, composition) {
 
-    var widgetPartAttribute = 'data-part',
-        widgetPartSelector = '[' + widgetPartAttribute + ']';
+    var partAttributeName = 'data-part',
+        partAttributeSelector = '[' + partAttributeName + ']';
 
     var kindModuleMaps = {},
         kindViewMaps = {},
-        bindableSettings = ['model','view','kind'];
+        bindableSettings = ['model', 'view', 'kind'];
 
     var widget = {
         getParts: function(elements) {
@@ -19,16 +19,17 @@
                 var element = elements[i];
 
                 if (element.getAttribute) {
-                    var id = element.getAttribute(widgetPartAttribute);
+                    var id = element.getAttribute(partAttributeName);
                     if (id) {
                         parts[id] = element;
                     }
 
-                    var childParts = $(widgetPartSelector, element);
+                    var childParts = $(partAttributeSelector, element)
+                                        .not($('[data-bind^="widget:"] ' + partAttributeSelector, element));
 
                     for (var j = 0; j < childParts.length; j++) {
                         var part = childParts.get(j);
-                        parts[part.getAttribute(widgetPartAttribute)] = part;
+                        parts[part.getAttribute(partAttributeName)] = part;
                     }
                 }
             }
@@ -38,7 +39,7 @@
         getSettings: function(valueAccessor) {
             var value = ko.utils.unwrapObservable(valueAccessor()) || {};
 
-            if (typeof value == 'string') {
+            if (system.isString(value)) {
                 return value;
             } else {
                 for (var attrName in value) {
@@ -75,42 +76,49 @@
                 kindModuleMaps[kind] = moduleId;
             }
         },
-        convertKindToModuleId: function(kind) {
-            return kindModuleMaps[kind] || 'durandal/widgets/' + kind + '/controller';
+        mapKindToModuleId: function(kind) {
+            return kindModuleMaps[kind] || widget.convertKindToModulePath(kind);
         },
-        convertKindToViewId: function (kind) {
-            return kindViewMaps[kind] || 'durandal/widgets/' + kind + '/view';
+        convertKindToModulePath: function(kind) {
+            return 'durandal/widgets/' + kind + '/viewmodel';
         },
-        beforeBind: function(element, view, settings) {
-            var replacementParts = widget.getParts(element);
-            var standardParts = widget.getParts(view);
+        mapKindToViewId: function(kind) {
+            return kindViewMaps[kind] || widget.convertKindToViewPath(kind);
+        },
+        convertKindToViewPath: function(kind) {
+            return 'durandal/widgets/' + kind + '/view';
+        },
+        beforeBind: function (child, context) {
+            var replacementParts = widget.getParts(context.parent);
+            var standardParts = widget.getParts(child);
 
             for (var partId in replacementParts) {
                 $(standardParts[partId]).replaceWith(replacementParts[partId]);
             }
         },
-        createCompositionSettings: function(settings) {
+        createCompositionSettings: function(element, settings) {
             if (!settings.model) {
-                settings.model = this.convertKindToModuleId(settings.kind);
+                settings.model = this.mapKindToModuleId(settings.kind);
             }
 
             if (!settings.view) {
-                settings.view = this.convertKindToViewId(settings.kind);
+                settings.view = this.mapKindToViewId(settings.kind);
             }
 
             settings.preserveContext = true;
             settings.beforeBind = this.beforeBind;
+            settings.activate = true;
+            settings.activationData = settings;
 
             return settings;
         },
-        create: function (element, settings, bindingContext) {
-            if (typeof settings == 'string') {
-                settings = {
-                    kind: settings
-                };
+        create: function(element, settings, bindingContext) {
+            if (system.isString(settings)) {
+                settings = { kind: settings };
             }
 
-            var compositionSettings = widget.createCompositionSettings(settings);
+            var compositionSettings = widget.createCompositionSettings(element, settings);
+
             composition.compose(element, compositionSettings, bindingContext);
         }
     };
