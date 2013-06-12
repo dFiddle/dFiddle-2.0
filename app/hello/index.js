@@ -7,10 +7,11 @@
           {route: '', moduleId: 'default/index', title: 'Hello World', type: 'intro'},
           {route: 'default', moduleId: 'default/index', title: 'Hello World', type: 'intro', nav: true},
           {route: 'dFiddle', moduleId: 'dFiddle/index', title: 'Hello World', type: 'fiddle', nav: true}
-      ]).buildNavigationModel();
+      ]).buildNavigationModel()
+      .on('router:navigation:complete').then(global.createSampleLink);
 
     // chaining .on breaks childRouter for whatever reason
-    childRouter.on('router:navigation:complete').then(global.createSampleLink);
+    //childRouter.on('router:navigation:complete').then(global.createSampleLink);
 
     return {
         global: global,
