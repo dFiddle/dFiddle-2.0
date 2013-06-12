@@ -1,7 +1,7 @@
 ﻿define(['plugins/router', 'global'], function( router, global ) {
     var childRouter = router.createChildRouter()
       .makeRelative({
-           moduleId: 'viewcomposition',
+           moduleId: 'viewComposition',
            route: 'view-composition'
        }).map([
           {

@@ -1,7 +1,7 @@
 ﻿define(['plugins/router', 'global'], function( router, global ) {
     var childRouter = router.createChildRouter()
       .makeRelative({
-           moduleId: 'masterdetail',
+           moduleId: 'masterDetail',
            route: 'master-detail'
        }).map([
           {
