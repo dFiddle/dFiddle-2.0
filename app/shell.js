@@ -1,5 +1,13 @@
 ﻿define(['plugins/router'], function (router) {
-    
+
+    // Redirecting from / to first routes
+    router.guardRoute = function(routeInfo, params, instance){
+        if (params.fragment === ''){
+            return routeInfo.router.routes[0].hash;
+        }
+        return true;
+    };
+
     return {
         router: router,
         activate: function () {
@@ -13,6 +21,8 @@
                 { route: 'master-detail*details', hash: '#master-detail', moduleId: 'masterDetail/index', title: 'Master Detail', nav: true },
                 { route: 'knockout-samples*details', hash: '#knockout-samples', moduleId: 'knockout/index', title: 'Knockout Samples', nav: true }
             ]).buildNavigationModel();
+
+
 
             return router.activate();
         }
