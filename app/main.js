@@ -1,9 +1,19 @@
 ﻿requirejs.config({
     paths: {
-      'text': '//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.3/text.min',
+      'text': '../lib/require/text',
       'durandal':'../lib/durandal/js',
       'plugins' : '../lib/durandal/js/plugins',
-      'transitions' : '../lib/durandal/js/transitions'
+      'transitions' : '../lib/durandal/js/transitions',
+      'knockout': '//ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1',
+      'jquery': '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min'
+    },
+    shim: {
+        'knockout': {
+            exports: 'ko'
+        },
+        'jquery': {
+            exports: '$'
+        }
     }
 });
 

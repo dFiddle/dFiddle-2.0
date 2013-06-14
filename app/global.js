@@ -1,5 +1,5 @@
-﻿define(['durandal/system'],
-    function (system) {
+﻿define(['durandal/system', 'knockout'],
+    function (system, ko) {
         var dFiddleRepoSource =  'https://github.com/dFiddle/dFiddle-2.0/tree/gh-pages/app/';
         var categories = ko.observableArray([
             {id: 'intro', text: 'Basic Examples'},

@@ -1,4 +1,4 @@
-﻿define(function() {
+﻿define(['knockout'], function(ko) {
 
   var role = ko.observable('role2');
 

@@ -1,4 +1,4 @@
-﻿define(['plugins/router', 'global'], function( router, global ) {
+﻿define(['plugins/router', 'global', 'knockout'], function( router, global, ko ) {
     var childRouter = router.createChildRouter()
       .makeRelative({
            moduleId: 'eventAggregator',

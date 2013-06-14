@@ -1,4 +1,4 @@
-﻿define(['durandal/activator', './step1', './step2', './step3'], function( activator, Step1, Step2, Step3 ) {
+﻿define(['durandal/activator', './step1', './step2', './step3', 'knockout'], function( activator, Step1, Step2, Step3, ko ) {
 
     var steps = [new Step1(), new Step2(), new Step3()];
     var step = ko.observable(0);
