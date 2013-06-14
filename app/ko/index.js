@@ -6,6 +6,7 @@
       }).map([
           { route: '', moduleId: 'helloWorld/index', title: 'Hello World', type: 'intro' },
           { route: 'helloWorld', moduleId: 'helloWorld/index', title: 'Hello World', type: 'intro', nav: true},
+          { route: 'helloWorld', moduleId: 'helloWorld2/index', title: 'Hello World', type: 'fiddle', nav: true},
           { route: 'clickCounter', moduleId: 'clickCounter/index', title: 'Click Counter', type: 'intro', nav: true},
           { route: 'simpleList', moduleId: 'simpleList/index', title: 'Simple List', type: 'intro', nav: true },
           { route: 'betterList', moduleId: 'betterList/index', title: 'Better List', type: 'intro', nav: true},
