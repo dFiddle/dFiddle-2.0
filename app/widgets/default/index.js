@@ -1,9 +1,4 @@
-﻿define(['./project', 'durandal/widget', 'knockout'], function (Project, widget, ko) {
-    
-    //The widget registration below is only necessary if you want to enable the short widget syntax.
-    //Normally, you would put this widget configuration in your main.js.
-    //It is here only to keep it from cluttering the main.js and confusing the code of other samples.
-    widget.registerKind('expander');
+﻿define(['./project', 'plugins/widget', 'knockout'], function (Project, widget, ko) {
 
     return {
         projects: ko.observableArray([
