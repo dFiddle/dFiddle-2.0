@@ -4,19 +4,22 @@
       'durandal':'../lib/durandal/js',
       'plugins' : '../lib/durandal/js/plugins',
       'transitions' : '../lib/durandal/js/transitions',
-      'knockout': '//ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1',
-      'jquery': '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min'
+      'knockout': [
+          '//ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1',
+          '../lib/jquery/jquery-1.9.1'
+      ],
+      'jquery': [
+          '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min',
+          '../lib/knockout/knockout-2.2.1'
+      ]
     },
     shim: {
-        'knockout': {
-            exports: 'ko'
-        },
-        'jquery': {
-            exports: '$'
+        'bootstrap': {
+            deps: ['jquery'],
+            exports: '$.support.transition' // just picked one
         }
     }
 });
-
 
 define(['durandal/system', 'durandal/app', 'durandal/viewLocator'],  function (system, app, viewLocator) {
     //>>excludeStart("build", true);
@@ -25,11 +28,14 @@ define(['durandal/system', 'durandal/app', 'durandal/viewLocator'],  function (s
 
     app.title = 'Durandal Samples';
 
-
     //specify which plugins to install and their configuration
-    app.plugins.widget = {
-        kinds: ['expander']
-    };
+    app.plugins = {
+           router:true,
+           dialog: true,
+           widget: {
+               kinds: ['expander']
+           }
+       };
 
     app.start().then(function () {
         //Replace 'viewmodels' in the moduleId with 'views' to locate the view.

@@ -17,12 +17,6 @@
     </div>
     
     <div class="container-fluid page-host">
-        <!--ko compose: { 
-            model: router.activeItem, //wiring the router
-            view: 'listing',
-            afterCompose: router.afterCompose, //wiring the router
-            transition:'entrance', //use the 'entrance' transition when switching views
-            cacheViews:true //telling composition to keep views in the dom, and reuse them (only a good idea with singleton view models)
-        }--><!--/ko-->
+        <!--ko router: { transition:'entrance', view: 'listing', cacheViews:true }--><!--/ko-->
     </div>
 </div>
