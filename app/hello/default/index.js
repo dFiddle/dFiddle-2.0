@@ -1,6 +1,6 @@
-﻿define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+﻿define(['durandal/app', 'durandal/system', 'knockout'], function( app, system, ko ) {
     var name = ko.observable();
-    var canSayHello = ko.computed(function () {
+    var canSayHello = ko.computed(function() {
         return name() ? true : false;
     });
 
@@ -14,19 +14,19 @@
         activate: function() {
             system.log('Lifecycle : activate');
         },
-        beforeBind: function () {
-            system.log('Lifecycle : beforeBind');
+        binding: function() {
+            system.log('Lifecycle : binding');
         },
-        afterBind: function () {
-            system.log('Lifecycle : afterBind');
+        bindingComplete: function() {
+            system.log('Lifecycle : bindingComplete');
         },
-        attachedToParent: function (view, parent) {
+        attachedToParent: function( view, parent ) {
             system.log('Lifecycle : attachedToParent');
         },
-        compositionComplete: function (view) {
+        compositionComplete: function( view ) {
             system.log('Lifecycle : compositionComplete');
         },
-        detachedFromDocument: function (view) {
+        detachedFromDocument: function( view ) {
             system.log('Lifecycle : detachedFromDocument'); //Note: This won't be called as long as the composition system is set to cache views.
         }
     };

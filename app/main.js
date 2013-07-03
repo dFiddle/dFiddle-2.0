@@ -4,6 +4,7 @@
       'durandal':'../lib/durandal/js',
       'plugins' : '../lib/durandal/js/plugins',
       'transitions' : '../lib/durandal/js/transitions',
+      'bootstrap': '../lib/bootstrap/js/bootstrap',
       'knockout': [
           '//ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1',
           '../lib/jquery/jquery-1.9.1'
@@ -28,14 +29,14 @@ define(['durandal/system', 'durandal/app', 'durandal/viewLocator'],  function (s
 
     app.title = 'Durandal Samples';
 
-    //specify which plugins to install and their configuration
-    app.plugins = {
-           router:true,
-           dialog: true,
-           widget: {
-               kinds: ['expander']
-           }
-       };
+     //specify which plugins to install and their configuration
+    app.configurePlugins({
+        router:true,
+        dialog: true,
+        widget: {
+            kinds: ['expander']
+        }
+    });
 
     app.start().then(function () {
         //Replace 'viewmodels' in the moduleId with 'views' to locate the view.

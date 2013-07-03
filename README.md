@@ -1,5 +1,5 @@
-# dFiddle 2.0 (alpha 2013/06/16)
-## Intermediate version. Do NOT use!
+# dFiddle 2.0 (alpha 2013/07/03)
+## Intermediate version. Use on your own risk!
 
 JSFiddle et al. are all great when there's a need to fiddle with CSS/JavaScript/HTML snippets or
 share code during discussions on stackoverflow or newsgroups. Unfortunately, due to the nature of  which encourages you to break down apps into many smaller modules and then use 

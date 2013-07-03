@@ -22,8 +22,6 @@
                 { route: 'knockout-samples*details', hash: '#knockout-samples', moduleId: 'ko/index', title: 'Knockout Samples', nav: true }
             ]).buildNavigationModel();
 
-
-
             return router.activate();
         }
     };
