@@ -1,4 +1,4 @@
-﻿define(['plugins/router', 'global', 'knockout'], function( router, global, ko ) {
+﻿define(['plugins/router', 'durandal/system', 'global', 'knockout'], function( router, system, global, ko ) {
     var childRouter = router.createChildRouter()
       .makeRelative({
           moduleId: 'hello',
@@ -19,6 +19,10 @@
             return ko.utils.arrayFilter(childRouter.navigationModel(), function( route ) {
                 return route.type === categoryId;
             });
+        },
+        binding: function() {
+            system.log('Lifecycle : binding : hello/index');
+            return { cacheViews: false }; //cancels view caching for this module, allowing the triggering of the detached callback
         }
     };
 });

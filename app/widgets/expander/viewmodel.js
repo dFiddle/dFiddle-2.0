@@ -6,6 +6,10 @@
         this.settings = settings;
     };
 
+    ctor.prototype.detached = function() {
+        console.log('expander/viewModel: detached', arguments, this);
+    };
+
     ctor.prototype.getHeaderText = function(item) {
         if (this.settings.headerProperty) {
             return item[this.settings.headerProperty];
