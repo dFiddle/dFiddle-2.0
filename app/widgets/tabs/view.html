@@ -1,0 +1,11 @@
+﻿<div class="tabs">
+    <ul class="nav nav-tabs" data-bind="foreach: { data: settings.items }">
+        <li data-bind="css: {active: isActive}">
+            <a data-bind="text: name, click: $parent.toggle.bind($parent)"></a>
+        </li>
+    </ul>
+
+    <div class="tab-content" data-bind="foreach: { data: settings.items}">
+        <div class="tab-pane"  data-bind="html: content, css: {active: isActive}"></div>
+    </div>
+</div>

@@ -4,7 +4,6 @@
         'durandal': '../lib/durandal/js',
         'plugins': '../lib/durandal/js/plugins',
         'transitions': '../lib/durandal/js/transitions',
-        'bootstrap': '../lib/bootstrap/js/bootstrap',
         'knockout': [
             '//cdnjs.cloudflare.com/ajax/libs/knockout/2.3.0/knockout-min',
             '../lib/knockout/knockout-2.3.0'
@@ -13,12 +12,6 @@
             '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min',
             '../lib/jquery/jquery-1.9.1.min'
         ]
-    },
-    shim: {
-        'bootstrap': {
-            deps: ['jquery'],
-            exports: 'jQuery'
-        }
     }
 });
 
