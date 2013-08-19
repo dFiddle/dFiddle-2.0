@@ -15,7 +15,6 @@
           isDFiddle: isDFiddle,
           dFiddleRepoUrl: dFiddleRepoUrl,
           createSampleLink: createSampleLink,
-          notAvailable: 'Coming soon',
           categories: categories
       };
 
