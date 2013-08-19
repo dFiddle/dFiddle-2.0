@@ -19,7 +19,7 @@ clone it to your local machine
 point for your own code.
 3. You're in the mood for creating more examples? Great! Simply create sub-folders in a samples sub-category
 folders e.g. `samples/viewCompostion` and add it to `sampleGroups` in `index.js`. Check out
-https://github.com/dFiddle/dFiddle-2.0/blob/gh-pages/app/viewComposition/index.js#L7 for the exact syntax.
+https://github.com/dFiddle/dFiddle-2.0/blob/gh-pages/app/viewComposition/index.js#L28 for the exact syntax.
 
 ### Advanced Usage
 
