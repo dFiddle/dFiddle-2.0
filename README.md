@@ -1,5 +1,5 @@
 # dFiddle 2.0
-## 2013/08/19 Updated to release version Durandal 2.0.0
+>  **2013/08/19**: Updated to release version of [Durandal] 2.0.0
 
 JSFiddle et al. are all great when there's a need to fiddle with CSS/JavaScript/HTML snippets or
 share code during discussions on stackoverflow or newsgroups. Unfortunately, due to the nature of  which encourages you to break down apps into many smaller modules and then use 
