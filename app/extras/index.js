@@ -1,8 +1,8 @@
 ﻿define(['plugins/router', 'durandal/system', 'global', 'knockout'], function( router, system, global, ko ) {
     var childRouter = router.createChildRouter()
           .makeRelative({
-               moduleId: 'bootstrap',
-               route: 'bootstrap'
+               moduleId: 'extras',
+               route: 'extras'
            }).map([
               {
                   type: 'fiddle',
