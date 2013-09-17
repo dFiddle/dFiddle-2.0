@@ -1,8 +1,8 @@
 ﻿define(['knockout'], function( ko ) {
 
     var Property = function( id, val ) {
-        this.id = id,
-            this.val = ko.observable(val);
+        this.id = id;
+        this.val = ko.observable(val);
     };
 
     var ctor = function( options ) {
