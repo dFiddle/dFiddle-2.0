@@ -1,25 +1,33 @@
 ﻿define(['plugins/router', 'durandal/system', 'global', 'knockout'], function( router, system, global, ko ) {
     var childRouter = router.createChildRouter()
-          .makeRelative({
-               moduleId: 'extras',
-               route: 'extras'
-           }).map([
-              {
-                  type: 'fiddle',
-                  title: 'Tabs',
-                  route: '',
-                  moduleId: 'default/index'
-              },
-              {
-                  type: 'fiddle',
-                  title: 'Tabs',
-                  route: 'default',
-                  moduleId: 'default/index',
-                  nav: true
-              }
-          ])
-          .buildNavigationModel();
-      
+        .makeRelative({
+            moduleId: 'extras',
+            route: 'extras'
+        }).map([
+            {
+                type: 'fiddle',
+                title: 'Tabs',
+                route: '',
+                moduleId: 'default/index'
+            },
+            {
+                type: 'fiddle',
+                title: 'Tabs',
+                route: 'default',
+                moduleId: 'default/index',
+                nav: true
+            },
+            {
+                type: 'fiddle',
+                title: 'Navigation',
+                route: 'optional(/:id)',
+                hash: '#extras/optional',
+                moduleId: 'optional/index',
+                nav: true
+            }
+        ])
+        .buildNavigationModel();
+
     // .on is mixed in an not meant to be  chainable 
     childRouter.on('router:navigation:complete').then(global.createSampleLink);
 

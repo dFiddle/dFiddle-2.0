@@ -1,0 +1,15 @@
+﻿<div class="navbar">
+      <div class="navbar-inner">
+          <ul class="nav" data-bind="foreach: navigation">
+              <li data-bind="css: { active: isActive() }">
+                  <a data-bind="attr: { href: hash }, html: title"></a>
+              </li>
+          </ul>
+          <div class="loader pull-right" data-bind="css: { active: childRouter.isNavigating }">
+              <i class="icon-spinner icon-2x icon-spin"></i>
+          </div>
+      </div>
+      <div>
+          <h3 data-bind="text: param"></h3>
+      </div>
+  </div>
