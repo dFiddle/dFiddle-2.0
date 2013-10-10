@@ -24,6 +24,14 @@
                 hash: '#extras/optional',
                 moduleId: 'optional/index',
                 nav: true
+            },
+            {
+                type: 'fiddle',
+                title: 'inPageNavigation',
+                route: 'welcome(/:id)',
+                hash: '#extras/welcome',
+                moduleId: 'inPage/index',
+                nav: true
             }
         ])
         .buildNavigationModel();

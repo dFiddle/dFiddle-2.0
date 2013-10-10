@@ -2,7 +2,7 @@
 
     var ctor = function(){
         this.childRouter = router;
-        this.param = ko.observable('No tab selected');
+        this.param = ko.observable('');
 
         this.navigation = ko.observableArray([
            new NavItem({title: 'Title 1', param: 'param1'}),
@@ -13,7 +13,7 @@
     };
 
     ctor.prototype.activate = function(param){
-        this.param('Param: ' + (param || 'no param!'));
+        this.param('Param: ' + (param || 'nothing selected!'));
     };
 
     return ctor;
