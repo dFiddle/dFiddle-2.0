@@ -8,6 +8,7 @@ define(['durandal/app', 'jquery', 'knockout', './common'], function( app, $, ko,
         uniqueObservable : ko.observable('Unique to Page1')
     });
 
+    //Page1.prototype.mixedInObservable('Overwrite value after $.extend() call');
 
     return Page1;
 
