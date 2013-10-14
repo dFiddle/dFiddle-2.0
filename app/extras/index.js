@@ -32,6 +32,14 @@
                 hash: '#extras/welcome',
                 moduleId: 'inPage/index',
                 nav: true
+            },
+            {
+                type: 'fiddle',
+                title: 'mixin',
+                route: 'mixin',
+                hash: '#extras/mixin',
+                moduleId: 'mixin/index',
+                nav: true
             }
         ])
         .buildNavigationModel();
