@@ -1,0 +1,16 @@
+﻿<div>
+    <h1>mixin sample</h1>
+
+
+    <ul data-bind="foreach: details">
+        <li>
+            <span data-bind="text: mixedInObservable, click: fadeRemove"></span>
+            <span data-bind="text: title"></span>
+        </li>
+    </ul>
+
+    <!--<h1 data-bind="text: mixedInObservable, click: $root.fadeRemove"></h1>
+
+    <h2 data-bind="text: uniqueObservable, click: $root.fadeRemove"></h2>-->
+
+</div>

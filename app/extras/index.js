@@ -40,6 +40,30 @@
                 hash: '#extras/mixin',
                 moduleId: 'mixin/index',
                 nav: true
+            },
+            {
+                type: 'fiddle',
+                title: 'mixin2',
+                route: 'mixin2(/:id)',
+                hash: '#extras/mixin2',
+                moduleId: 'mixin2/index',
+                nav: true
+            },
+            {
+                type: 'fiddle',
+                title: 'scope before',
+                route: 'scope',
+                hash: '#extras/scope',
+                moduleId: 'scope/index',
+                nav: true
+            },
+            {
+                type: 'fiddle',
+                title: 'scope ctor',
+                route: 'scope/ctor',
+                hash: '#extras/scope/ctor',
+                moduleId: 'scope/ctor',
+                nav: true
             }
         ])
         .buildNavigationModel();
