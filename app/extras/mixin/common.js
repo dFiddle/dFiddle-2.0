@@ -2,7 +2,7 @@
 define(['jquery', 'knockout'], function($, ko) {
     "use strict";
     return {
-        mixedInObservable: ko.observable('Click me...'),
+        commonObservable: ko.observable('commonObservable: Defined in common.js.  Click me...'),
         showElement: function( model, elem ) {
             var target = elem.currentTarget;
             if ( target.nodeType === 1 ) {

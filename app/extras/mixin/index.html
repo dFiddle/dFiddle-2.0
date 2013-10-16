@@ -2,8 +2,9 @@
     <h1>mixin sample</h1>
 
 
-    <h1 data-bind="text: mixedInObservable, click: $root.fadeRemove"></h1>
-
-    <h2 data-bind="text: uniqueObservable, click: $root.fadeRemove"></h2>
-
+    <ul class="unstyled ">
+        <li data-bind="text: commonObservable, click: fadeRemove"></li>
+        <li data-bind="text: sharedObservable, click: fadeRemove"></li>
+        <li data-bind="text: uniqueObservable, click: fadeRemove"></li>
+    </ul>
 </div>

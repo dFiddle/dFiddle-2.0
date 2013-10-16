@@ -1,15 +1,14 @@
 ﻿/*globals define */
 define(['durandal/app', 'jquery', 'knockout', './common'], function( app, $, ko, common ) {
     "use strict";
-    var Page1 = function() {
+    var Page = function() {
+       this.uniqueObservable = ko.observable('uniqueObservable: Page property. Click me... ');
     };
 
-    $.extend(true, Page1.prototype, common, {
-        uniqueObservable : ko.observable('Unique to Page1')
+    // Everything that 'lives' on prototype is shared between all instances
+    $.extend(true, Page.prototype, common, {
+        sharedObservable : ko.observable('sharedObservable: mixed in after common. Click me...')
     });
 
-    //Page1.prototype.mixedInObservable('Overwrite value after $.extend() call');
-
-    return Page1;
-
+    return Page;
 });
