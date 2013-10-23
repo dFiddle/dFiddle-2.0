@@ -7,13 +7,7 @@
           {
               type: 'intro',
               title: 'PubSub',
-              route: '',
-              moduleId: 'default/index'
-          },
-          {
-              type: 'intro',
-              title: 'PubSub',
-              route: 'default',
+              route: ['', 'default'],
               moduleId: 'default/index',
               nav: true
           },
