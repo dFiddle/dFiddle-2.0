@@ -6,14 +6,8 @@
        }).map([
           {
               type: 'intro',
-              title: 'Modal',
-              route: '',
-              moduleId: 'default/index'
-          },
-          {
-              type: 'intro',
               title: 'Modal Dialog',
-              route: 'default',
+              route: ['', 'default'],
               moduleId: 'default/index',
               nav: true
           },

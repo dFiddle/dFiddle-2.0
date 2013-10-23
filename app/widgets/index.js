@@ -7,13 +7,7 @@
           {
               type: 'intro',
               title: 'Widget Sample',
-              route: '',
-              moduleId: 'default/index'
-          },
-          {
-              type: 'intro',
-              title: 'Widget Sample',
-              route: 'default',
+              route: ['', 'default'],
               moduleId: 'default/index',
               nav: true
           },

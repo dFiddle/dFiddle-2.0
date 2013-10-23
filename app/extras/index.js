@@ -7,13 +7,7 @@
             {
                 type: 'fiddle',
                 title: 'Tabs',
-                route: '',
-                moduleId: 'default/index'
-            },
-            {
-                type: 'fiddle',
-                title: 'Tabs',
-                route: 'default',
+                route: ['', 'default'],
                 moduleId: 'default/index',
                 nav: true
             },

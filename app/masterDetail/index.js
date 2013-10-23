@@ -7,13 +7,7 @@
             {
                 type: 'intro',
                 title: 'Master Detail',
-                route: '',
-                moduleId: 'default/index'
-            },
-            {
-                type: 'intro',
-                title: 'Master Detail',
-                route: 'default',
+                route: ['', 'default'],
                 moduleId: 'default/index',
                 nav: true
             },

@@ -7,13 +7,7 @@
           {
               type: 'intro',
               title: 'View composition',
-              route: '',
-              moduleId: 'default/index'
-          },
-          {
-              type: 'intro',
-              title: 'View composition',
-              route: 'default',
+              route: ['', 'default'],
               moduleId: 'default/index',
               nav: true
           },
