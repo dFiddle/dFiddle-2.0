@@ -58,6 +58,14 @@
                 hash: '#extras/scope/ctor',
                 moduleId: 'scope/ctor',
                 nav: true
+            },
+            {
+                type: 'fiddle',
+                title: 'so19551060',
+                route: 'scope/ctor',
+                hash: '#extras/scope/ctor',
+                moduleId: 'scope/ctor',
+                nav: true
             }
         ])
         .buildNavigationModel();
