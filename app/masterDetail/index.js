@@ -31,7 +31,15 @@
                 route: 'wizard2',
                 moduleId: 'wizard2/index',
                 nav: true
+            },
+            {
+                type: 'fiddle',
+                title: 'so19719038',
+                route: 'so19719038',
+                moduleId: 'so19719038/index',
+                nav: true
             }
+
         ])
         .buildNavigationModel();
 
