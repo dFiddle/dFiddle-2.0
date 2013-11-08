@@ -17,6 +17,13 @@
                 route: '19551060',
                 moduleId: '19551060/index',
                 nav: true
+            },
+            {
+                type: 'fiddle',
+                title: 'so19857807',
+                route: '19857807',
+                moduleId: '19857807/index',
+                nav: true
             }
         ])
         .buildNavigationModel();
