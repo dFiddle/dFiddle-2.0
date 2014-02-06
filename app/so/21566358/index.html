@@ -1,0 +1,9 @@
+﻿    <div>
+        <h1>Widgets Sample</h1>
+        <!-- ko foreach: new Array(100) -->
+        <div data-bind="expander:{items:$root.projects}">
+            <h3 data-part="header">Project: <span data-bind="text: name"></span></h3>
+        </div>
+        <!-- /ko -->
+        <button class="btn" data-bind="click: addNewProject">Add</button>
+    </div>
