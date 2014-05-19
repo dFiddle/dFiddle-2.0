@@ -1,5 +1,5 @@
 # dFiddle 2.0
->  **2013/10/23*: Update to release version of [Durandal] 2.0.1
+>  **2014/05/19*: Update to pre-release version of [Durandal 2.1.0pre](https://github.com/BlueSpire/Durandal/releases/tag/2.1.0-pre)
 
 JSFiddle et al. are all great when there's a need to fiddle with CSS/JavaScript/HTML snippets or
 share code during discussions on stackoverflow or newsgroups. Unfortunately, due to the nature of  which encourages you to break down apps into many smaller modules and then use

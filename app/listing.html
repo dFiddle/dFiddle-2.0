@@ -1,6 +1,6 @@
 ﻿<div class="container-fluid knockout-samples">
     <div class="row-fluid">
-        <div class="span2 well">
+        <div class="col-md-2">
             <ul class="nav nav-list">
                 <!--ko foreach: global.categories -->
                 <li class="nav-header" data-bind="text: text"></li>
@@ -12,7 +12,7 @@
                 <!--/ko-->
             </ul>
         </div>
-        <div class="span10">
+        <div class="col-md-10" style="padding: 0">
             <!-- ko if: $data.global.isDFiddle -->
             <div class="alert">
                 <strong>dFiddle</strong> code available at <a
