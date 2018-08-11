@@ -37,7 +37,7 @@ Once you make your first commit the live version will become available at an URL
 Pages.
 According to GitHub, it may take up to **ten minutes** for changes to be visible.
 
-+ Share links to the the live version e.g. http://dfiddle.github.io/dFiddle-2.0/#master-detail/wizard
++ Share links to the live version e.g. http://dfiddle.github.io/dFiddle-2.0/#master-detail/wizard
 + Share links right down to a specific code line e.g.
 https://github.com/dFiddle/dFiddle-2.0/blob/gh-pages/app/masterDetail/wizard/index.js#L3
 
